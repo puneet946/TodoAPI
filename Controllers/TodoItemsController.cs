@@ -84,11 +84,14 @@ namespace TodoAPI.Controllers
 
             return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
         }
+
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        //I am using the below function to update the todoitems
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTodoItem(long id, TodoItem updatedTodoItem)
         {
+            //Using if else statment to check if id is equals to the ID
             if (id != updatedTodoItem.Id)
             {
                 return BadRequest();
@@ -100,7 +103,7 @@ namespace TodoAPI.Controllers
                 return NotFound();
             }
 
-            // Update the properties of the existingTodoItem with values from updatedTodoItem
+            // Updating the properties of the existingTodoItem 
             existingTodoItem.Name = updatedTodoItem.Name;
             existingTodoItem.IsCompleted = updatedTodoItem.IsCompleted;
 
